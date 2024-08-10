@@ -1,13 +1,9 @@
-import EasyEdit, { Types } from "react-easy-edit";
-import ContentEditable from "react-contenteditable";
-
-const { useState, useEffect } = require("react");
+const { useState } = require("react");
 
 const ItemForm = ({ Item }) => {
   const [ItemName, setItemName] = useState("");
   const [Description, setDescription] = useState("");
   const [Quantity, setQuantity] = useState(null);
-  const [Editing, setEdidting] = useState(false);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,18 +79,6 @@ const ItemForm = ({ Item }) => {
                 >
                   Description
                 </label>
-                {/* <input
-                  type="text"
-                  name="Description"
-                  id="Description"
-                  placeholder="Description"
-                  className="bg-[#1d232a] rounded-lg w-full break-words size-96"
-                  required=""
-                  onChange={(e) => setDescription(e.target.value)}
-                  defaultValue={
-                    "5555555555555555555555555555555555555555555555511111111111113215618161651518915615615648946165156156154898618948189189189141845511"
-                  }
-                /> */}
                 <textarea
                   className="textarea textarea-ghost w-full resize-none p-0"
                   placeholder={Item.Description}

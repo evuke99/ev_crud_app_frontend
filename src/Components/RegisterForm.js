@@ -5,7 +5,6 @@ const RegisterForm = () => {
   const [LastName, setLastName] = useState("");
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
-  const [error, setError] = useState(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -21,11 +20,9 @@ const RegisterForm = () => {
     })
       .then((res) => {
         if (!res.ok) {
-          setError(res.json().error);
           throw new Error(res.status);
         } else {
           const json = res.json();
-          setError(null);
           console.log("here");
           document.getElementById("register-modal-form").submit();
           return json;
@@ -36,7 +33,6 @@ const RegisterForm = () => {
         setLastName("");
         setUsername("");
         setPassword("");
-        setError(null);
         console.log("new user added", data);
       })
       .catch((err) => {

@@ -1,7 +1,6 @@
 // Components
 import { useEffect, useState } from "react";
 import InventoryList from "../Components/InventoryList";
-import UserList from "../Components/UserList";
 import Navbar from "../Components/Navbar";
 
 const Home = () => {

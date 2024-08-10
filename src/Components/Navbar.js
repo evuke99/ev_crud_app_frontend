@@ -2,50 +2,34 @@ import SignInModal from "./SignInModal";
 import RegisterModal from "./RegisterModal";
 import LogoutButton from "./LogoutButton";
 import CreateItemModal from "./CreateItemModal";
-import CreateItemForm from "./CreateItemForm";
 import Axios from "axios";
 import { useState, useEffect } from "react";
-import { useItemContext } from "../Hooks/useItemContext";
 
 Axios.defaults.withCredentials = true;
 
 const Navbar = ({ update, signedIn, newItem }) => {
-  const { ITEMS, dispatch } = useItemContext();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
-  // const [Username, setUsername] = useState("");
-  // const [_id, setID] = useState(null);
-  const [isLoggingIn, setIsLoggingIn] = useState(false);
-  const [updateState, setUpdateState] = useState(false);
-  const [counter, setCounter] = useState(0);
 
   const logIn = () => {
-    console.log("LOGIN");
     signedIn(true);
     setIsLoggedIn(true);
     localStorage.setItem("LOGGED_IN", JSON.stringify(true));
-    // localStorage.setItem("UPDATE_OPTION", JSON.stringify("LOGIN"));
-    // update("LOGIN");
     handleUpdate("LOGIN");
   };
 
   const logOut = () => {
-    console.log("LOGOUT");
     signedIn(false);
     setIsLoggedIn(false);
     localStorage.setItem("LOGGED_IN", JSON.stringify(false));
     localStorage.removeItem("User");
-    // update("LOGOUT");
     handleUpdate("LOGOUT");
   };
 
   const createItem = () => {
-    console.log("CREATE_ITEM");
-    // update("CREATEITEM");
     handleUpdate("CREATE_ITEM");
   };
 
   const handleUpdate = (data) => {
-    console.log(data);
     localStorage.setItem("UPDATE_OPTION", JSON.stringify(data));
     update(data);
   };
@@ -65,7 +49,6 @@ const Navbar = ({ update, signedIn, newItem }) => {
             _id: res.data.user._id,
           })
         );
-        // ITEM(JSON.parse(localStorage.getItem("User")));
       })
       .catch((err) => {
         console.log(err);
@@ -115,7 +98,6 @@ const Navbar = ({ update, signedIn, newItem }) => {
       return (
         <>
           <div className="navbar-end bg-base-300">
-            {/* <SignInModal logginIn={() => setIsLoggedIn(true)} /> */}
             <SignInModal logginIn={logIn} />
             <RegisterModal />
           </div>

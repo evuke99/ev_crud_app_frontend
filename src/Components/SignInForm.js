@@ -1,12 +1,10 @@
 import Axios from "axios";
-import { Link, useNavigate } from "react-router-dom";
 const { useState } = require("react");
 
 const SignInForm = ({ logginIn }) => {
   const [Username, setUsername] = useState("");
   const [Password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const navigate = useNavigate();
 
   Axios.defaults.withCredentials = true;
 
@@ -25,9 +23,7 @@ const SignInForm = ({ logginIn }) => {
         }
       })
       .then((data) => {
-        console.log("DATA: ", data);
         if (data == "Username or Password Incorrect") {
-          console.log("HELLO");
           setError(data);
         } else {
           document.getElementById("signin-modal-form").submit();

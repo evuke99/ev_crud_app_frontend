@@ -13,25 +13,6 @@ const ItemCard = (props) => {
   const [moreInfo, setMoreInfo] = useState(false);
 
   useEffect(() => {
-    // console.log(props.item);
-    // console.log(props.description);
-    // console.log("MORE INFO: ", props.moreInfo);
-    // if (props.moreInfo) {
-    //   setMoreDescription(props.description);
-    // }
-    // setItemName(props.item.ItemName);
-    // // console.log(props.moreInfo);
-    // console.log(props.description.length <= 100);
-    // if (moreInfo || props.description.length <= 100) {
-    //   console.log("here1: ", props.item.ItemName);
-    //   setDescription(props.description);
-    //   setOldDescription(props.description);
-    // } else {
-    //   console.log("here2: ", props.item.ItemName);
-    //   console.log(props.description.substring(0, 100) + "...");
-    //   setDescription(props.description.substring(0, 100) + "...");
-    //   setOldDescription(props.description.substring(0, 100) + "...");
-    // }
     setItemName(props.item.ItemName);
 
     setDescription(props.description);
@@ -43,12 +24,6 @@ const ItemCard = (props) => {
     setOldQuantity(props.item.Quantity);
   }, [props.item]);
 
-  //   useEffect(() => {
-  //     setItemName(oldItemName);
-  //     setDescription(oldDescription);
-  //     setQuantity(oldQuantity);
-  //   }, [itemName, description, quantity]);
-
   const toggleEdit = () => {
     if (editing) {
       setEditing(false);
@@ -58,7 +33,6 @@ const ItemCard = (props) => {
   };
 
   const handleEdit = () => {
-    // props.toggleMoreInfo("EDIT");
     setMoreInfo(true);
     toggleEdit();
   };
@@ -69,8 +43,6 @@ const ItemCard = (props) => {
       Quantity: quantity,
       Description: description,
     };
-    console.log(data);
-    console.log(item._id);
     Axios.patch(`/api/inventory/${item._id}`, data)
       .then((res) => {
         console.log(res);
@@ -81,17 +53,7 @@ const ItemCard = (props) => {
         console.log(err);
       });
     data._id = item._id;
-    console.log(data);
     props.editItem(data);
-  };
-
-  const handleCancel = () => {
-    setItemName(oldItemName);
-    setDescription(oldDescription);
-    setQuantity(oldQuantity);
-    toggleEdit();
-    // props.toggleMoreInfo("CANCEL");
-    setMoreInfo(false);
   };
 
   const handleMoreInfo = () => {
@@ -153,7 +115,6 @@ const ItemCard = (props) => {
         key={props.item._id}
         className="card bg-base-300 text-white border shadow-lg"
       >
-        {console.log("ItemCard rendering")}
         <div className="card-body   ">
           <h2 className="card-title text-4xl gap-5">
             <div className="">{itemName}</div>
@@ -165,11 +126,9 @@ const ItemCard = (props) => {
 
           <p className="break-words">{Description()}</p>
           <div className="card-actions justify-end">
-            {/* {tooLong && ( */}
             <button className="btn btn-primary" onClick={handleMoreInfo}>
               More Info
             </button>
-            {/* )} */}
             <button className="btn btn-primary" onClick={handleEdit}>
               Edit
             </button>
@@ -184,13 +143,11 @@ const ItemCard = (props) => {
       </section>
     );
   } else {
-    // console.log(temp());
     return (
       <section
         key={props.item._id}
         className="card bg-base-300 text-white border shadow-lg"
       >
-        {/* {console.log(description)} */}
         <div className="card-body   ">
           <h2 className="card-title text-4xl gap-5">
             <div className="">{itemName}</div>
