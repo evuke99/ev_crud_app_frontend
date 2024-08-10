@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/ev_crud_app_frontend/static/css/main.d4bfc86e.css",
+    "main.js": "/ev_crud_app_frontend/static/js/main.1a3eff6d.js",
+    "index.html": "/ev_crud_app_frontend/index.html",
+    "main.d4bfc86e.css.map": "/ev_crud_app_frontend/static/css/main.d4bfc86e.css.map",
+    "main.1a3eff6d.js.map": "/ev_crud_app_frontend/static/js/main.1a3eff6d.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d4bfc86e.css",
+    "static/js/main.1a3eff6d.js"
+  ]
+}
