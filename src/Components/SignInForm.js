@@ -20,19 +20,51 @@ const SignInForm = ({ logginIn }) => {
         if (res.data.status) {
           console.log(res.data.status + " logged in");
         } else {
-          console.log(res.data);
+          console.log(res.data.message);
+          return res.data.message;
         }
       })
-      .then(() => {
-        document.getElementById("signin-modal-form").submit();
-        logginIn();
+      .then((data) => {
+        console.log("DATA: ", data);
+        if (data == "Username or Password Incorrect") {
+          console.log("HELLO");
+          setError(data);
+        } else {
+          document.getElementById("signin-modal-form").submit();
+          logginIn();
+        }
       })
       .catch((err) => {
         console.log(err);
       });
   };
+
+  const ErrorBar = () => {
+    if (error == "Username or Password Incorrect") {
+      return (
+        <div role="alert" className="alert alert-error">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            className="h-6 w-6 shrink-0 stroke-current"
+            fill="none"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+              d="M10 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2m7-2a9 9 0 11-18 0 9 9 0 0118 0z"
+            />
+          </svg>
+          <span>{error}</span>
+        </div>
+      );
+    }
+  };
+
   return (
     <section>
+      <ErrorBar />
       <div className="flex flex-col smd:h-screen lg:py-0">
         {/* <button className="text-right" onClick={() => }>X</button> */}
         <div className="modal-action">
