@@ -1,5 +1,5 @@
 {
-  "homepage": "http://evuke99.github.io/ev_crud_app_frontend",
+  "homepage": "http://evuke99.github.io/ev_crud_app_frontend/",
   "proxy": "https://ev-crud-app-backend-1.onrender.com/",
   "name": "client",
   "version": "0.1.0",
